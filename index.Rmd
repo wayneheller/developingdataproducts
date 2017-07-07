@@ -9,22 +9,49 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Introduction
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This interactive map was created as part of the Johns Hopkins Coursera Data Science Specializaiton Course - Developing Data Products.  
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The information on this map was scraped from the Wikipedia page https://en.wikipedia.org/wiki/List_of_astronomical_observatories The webscraping code is located here: https://github.com/wayneheller/developingdataproducts/blob/gh-pages/scrapeObservatoryInfo.R and at the time of this writing is still being refined.
 
-```{r cars}
-summary(cars)
+The instructions for this course assignment are fairly broad:  
+
+**Create a web page using R Markdown that features a map created with Leaflet.**  
+
+*Host your webpage on either GitHub Pages, RPubs, or NeoCities.*  
+
+*Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!*
+
+**Review criteria**
+
+*The rubric contains the following two questions:*
+
+*Does the web page feature a date and is this date less than two months before the date that you're grading this assignment?*
+
+*Does the web page feature an interactive map that appears to have been created with Leaflet?*
+
+
+## Interactive Map of Ground-based Astronomical Observatories
+
+
+```{r leaflet_map, echo=FALSE,}
+suppressWarnings(library(leaflet))
+
+
+
+makeHref <-function(url, lnk) {
+        wikipediaUrl <- "http://en.wikipedia.org"
+        href <- paste0("<a href='", wikipediaUrl, url, "'>", lnk, "</a>")
+        return(href)
+}
+dfObservatories <- read.csv("observatories.csv")
+my_map <- leaflet() %>% addTiles()
+my_map <- my_map %>% addMarkers(lat=dfObservatories$latitude, lng=dfObservatories$longitude,
+                                popup=apply(dfObservatories[,c('url','link')], 1, function(x) makeHref(x[1],x[2])),
+                                clusterOptions = markerClusterOptions())
+        
+my_map
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
