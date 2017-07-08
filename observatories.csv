@@ -281,9 +281,9 @@ Hartung–Boothroyd Observatory,/wiki/Hartung%E2%80%93Boothroyd_Observatory,42.458
 Hartebeesthoek Radio Astronomy Observatory,/wiki/Hartebeesthoek_Radio_Astronomy_Observatory,-25.88722,27.68472,FALSE,Radio
 South Africa,/wiki/South_Africa,-30,25,TRUE,
 Harvard College Observatory,/wiki/Harvard_College_Observatory,42.38146,-71.12837,FALSE,Visible
-"Cambridge, Massachusetts","/wiki/Cambridge,_Massachusetts",42.37361,-71.11056,FALSE,Visible
+"Cambridge, Massachusetts","/wiki/Cambridge,_Massachusetts",42.37361,-71.11056,TRUE,Visible
 Harvard–Smithsonian Center for Astrophysics,/wiki/Harvard%E2%80%93Smithsonian_Center_for_Astrophysics,42.38146,-71.12837,FALSE,Visible
-"Cambridge, Massachusetts","/wiki/Cambridge,_Massachusetts",42.37361,-71.11056,FALSE,Visible
+"Cambridge, Massachusetts","/wiki/Cambridge,_Massachusetts",42.37361,-71.11056,TRUE,Visible
 Haute-Provence Observatory,/wiki/Haute-Provence_Observatory,43.93083333,5.713333333,FALSE,Visible
 Haystack Observatory,/wiki/Haystack_Observatory,42.6233,-71.4882,FALSE,Visible
 Hector J Robinson Observatory,/wiki/Hector_J_Robinson_Observatory,42.24583,-83.18694,FALSE,Visible
@@ -517,7 +517,7 @@ Mount Graham,/wiki/Mount_Graham,32.70165781,-109.871391,TRUE,
 Mount John University Observatory,/wiki/Mount_John_University_Observatory,-43.9867,170.465,FALSE,Visible
 Lake Tekapo,/wiki/Lake_Tekapo,-43.883,170.517,TRUE,
 Mount Laguna Observatory,/wiki/Mount_Laguna_Observatory,32.8424,-116.428,FALSE,Visible
-"San Diego, California","/wiki/San_Diego,_California",32.715,-117.1625,FALSE,Visible
+"San Diego, California","/wiki/San_Diego,_California",32.715,-117.1625,TRUE,Visible
 Mount Lemmon Observatory,/wiki/Mount_Lemmon_Observatory,32.442,-110.7893,FALSE,Visible
 "Tucson, Arizona","/wiki/Tucson,_Arizona",32.22167,-110.92639,TRUE,
 Mount Pleasant Radio Observatory,/wiki/Mount_Pleasant_Radio_Observatory,-42.805,147.439,FALSE,Radio
@@ -525,7 +525,7 @@ Mount Stromlo Observatory,/wiki/Mount_Stromlo_Observatory,-35.32027778,149.00694
 Canberra,/wiki/Canberra,-35.3075,149.124417,TRUE,
 Mount Suhora Observatory,/wiki/Mount_Suhora_Observatory,49.56917,20.0675,FALSE,Visible
 Mount Wilson Observatory,/wiki/Mount_Wilson_Observatory,34.22,-118.07,FALSE,Visible
-Mount Wilson,/wiki/Mount_Wilson_(California),34.22375903,-118.0616449,FALSE,Visible
+Mount Wilson,/wiki/Mount_Wilson_(California),34.22375903,-118.0616449,TRUE,Visible
 "Los Angeles County, California","/wiki/Los_Angeles_County,_California",34.05,-118.25,FALSE,Visible
 Mountain Skies Observatory,/wiki/Mountain_Skies_Observatory,41.328,-110.292,FALSE,Visible
 Mullard Radio Astronomy Observatory,/wiki/Mullard_Radio_Astronomy_Observatory,52.1674,0.0326,FALSE,Radio
@@ -685,7 +685,7 @@ Azerbaijan,/wiki/Azerbaijan,40.417,49.833,TRUE,
 Shanghai Astronomical Observatory,/wiki/Shanghai_Astronomical_Observatory,31.19028,121.42944,FALSE,Visible
 Sherzer Observatory,/wiki/Sherzer_Observatory,42.155,-83.372856,FALSE,Visible
 Siding Spring Observatory,/wiki/Siding_Spring_Observatory,-31.27333,149.06444,FALSE,Visible
-Siding Spring,/wiki/Siding_Spring_Observatory,-31.27333,149.06444,FALSE,Visible
+Siding Spring,/wiki/Siding_Spring_Observatory,-31.27333,149.06444,TRUE,Visible
 Sidmouth Observatory,/wiki/Lockyer_Observatory_and_Planetarium,50.68803,-3.219835,FALSE,Solar
 Sidmouth,/wiki/Sidmouth,50.68,-3.239,TRUE,
 Sierra Nevada Observatory,/wiki/Sierra_Nevada_Observatory,37.064219,-3.3847,FALSE,Visible
@@ -705,14 +705,14 @@ Sola Fide Observatory,/wiki/Sola_Fide_Observatory,43.618959,-92.987294,FALSE,Vis
 "Austin, Minnesota","/wiki/Austin,_Minnesota",43.667,-92.967,TRUE,
 Solar Space Telescope,/wiki/Space_program_of_China#List_of_projects,-7,117.55,FALSE,Visible
 Sommers–Bausch Observatory,/wiki/Sommers%E2%80%93Bausch_Observatory,40.003722,-105.2625,FALSE,Visible
-"Boulder, Colorado","/wiki/Boulder,_Colorado",40.027435,-105.251945,FALSE,Visible
+"Boulder, Colorado","/wiki/Boulder,_Colorado",40.027435,-105.251945,TRUE,Visible
 Sonnenborgh Observatory,/wiki/Sonnenborgh_Observatory,52.08667,5.13,FALSE,Visible
 Utrecht,/wiki/Utrecht_(city),52.083,5.117,TRUE,
 Sonoma State Observatory,/wiki/Sonoma_State_Observatory,38.33667,-122.6675,FALSE,Visible
 South African Astronomical Observatory,/wiki/South_African_Astronomical_Observatory,-33.9347,18.4776,FALSE,Visible
 "Observatory, Cape Town","/wiki/Observatory,_Cape_Town",-33.93778,18.47083,FALSE,Visible
 South Africa,/wiki/South_Africa,-30,25,TRUE,
-"Sutherland, Northern Cape","/wiki/Sutherland,_Northern_Cape",-32.39361,20.66139,FALSE,Visible
+"Sutherland, Northern Cape","/wiki/Sutherland,_Northern_Cape",-32.39361,20.66139,TRUE,Visible
 South Africa,/wiki/South_Africa,-30,25,TRUE,
 Southern Astrophysical Research Telescope (SOAR),/wiki/Southern_Astrophysical_Research_Telescope,-30.238,-70.73372,FALSE,Visible
 Cerro Pachón,/wiki/Cerro_Pach%C3%B3n,-30.240722,-70.736583,FALSE,Visible
@@ -822,11 +822,11 @@ Van Vleck Observatory,/wiki/Van_Vleck_Observatory,41.555,-72.65917,FALSE,Visible
 Vanderbilt University Observatory,/wiki/Vanderbilt_University_Observatory,36.0524,-86.8053,FALSE,Visible
 Vartiovuori Observatory,/wiki/Vartiovuori_Observatory,60.44861,22.27667,FALSE,Visible
 Vassar College Observatory,/wiki/Vassar_College_Observatory,41.688285,-73.89331,FALSE,Visible
-"Poughkeepsie, New York","/wiki/Poughkeepsie_(town),_New_York",41.67111,-73.90694,FALSE,Visible
+"Poughkeepsie, New York","/wiki/Poughkeepsie_(town),_New_York",41.67111,-73.90694,TRUE,Visible
 Vatican Observatory,/wiki/Vatican_Observatory,41.74722222,12.65055556,FALSE,Visible
 Vatican Advanced Technology Telescope,/wiki/Vatican_Advanced_Technology_Telescope,32.7013278,-109.8923722,FALSE,Visible
 Castel Gandolfo,/wiki/Castel_Gandolfo,41.7467472,12.6505861,FALSE,Visible
-Mount Graham,/wiki/Mount_Graham,32.70165781,-109.871391,FALSE,Visible
+Mount Graham,/wiki/Mount_Graham,32.70165781,-109.871391,TRUE,Visible
 Veen Observatory,/wiki/Veen_Observatory,42.90444,-85.40361,FALSE,Visible
 Vega–Bray Observatory,/wiki/Vega%E2%80%93Bray_Observatory,31.94083,-110.2575,FALSE,Visible
 Ventspils Starptautiskais Radioastronomijas Centrs,/wiki/Ventspils_Starptautiskais_Radioastronomijas_Centrs,57.553493,21.854916,FALSE,Radio
@@ -836,7 +836,7 @@ Very Long Baseline Array,/wiki/Very_Long_Baseline_Array,34.07883,-107.61831,FALS
 Vienna Observatory,/wiki/Vienna_Observatory,48.2318833,16.3337472,FALSE,Visible
 Vilnius University Observatory,/wiki/Vilnius_University_Observatory,54.683111,25.2865,FALSE,Visible
 Vilnius University,/wiki/Vilnius_University,54.6825,25.28722,TRUE,
-Lithuania,/wiki/Lithuania,54.683,25.317,FALSE,Visible
+Lithuania,/wiki/Lithuania,54.683,25.317,TRUE,Visible
 Višnjan Observatory,/wiki/Vi%C5%A1njan_Observatory,45.2775,13.72611,FALSE,Visible
 Višnjan,/wiki/Vi%C5%A1njan,45.2775,13.72611,TRUE,
 Vsetín Observatory,/wiki/Observatory_Vset%C3%ADn,49.34425,17.9962806,FALSE,Visible
@@ -851,7 +851,7 @@ West Mountain Observatory,/wiki/West_Mountain_Observatory,40.08741,-111.82604,FA
 West Mountain (Utah),/wiki/West_Mountain_(Utah),40.05541007,-111.8295097,TRUE,
 Whitin Observatory,/wiki/Whitin_Observatory,42.295,-71.303,FALSE,Visible
 Widener University Observatory,/wiki/Widener_University_Observatory,39.86222,-75.35833,FALSE,Visible
-"Chester, Pennsylvania","/wiki/Chester,_Pennsylvania",39.84722,-75.37278,FALSE,Visible
+"Chester, Pennsylvania","/wiki/Chester,_Pennsylvania",39.84722,-75.37278,TRUE,Visible
 Wilder Observatory,/wiki/Wilder_Observatory,42.36575,-72.52417,FALSE,Visible
 Willard L. Eccles Observatory,/wiki/Willard_L._Eccles_Observatory,38.5217,-113.2863,FALSE,Visible
 William Brydone Jack Observatory,/wiki/William_Brydone_Jack_Observatory,45.94806,-66.64056,FALSE,Visible
