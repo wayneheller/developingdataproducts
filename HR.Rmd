@@ -1,0 +1,95 @@
+---
+title: "Hertzsprung-Russell Diagram"
+subtitle: "Coursera | Developing Data Products | Week 3 Course Project"
+author: "Wayne Heller"
+date: "July 15, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Background
+
+The Hertzsprung-Russell Diagram is a graphical tool that astronomers use to classify stars according to their luminosity, spectral type, color, temperature and evolutionary stage.
+
+For more information:
++ http://www.astro.cornell.edu/academics/courses/astro201/hr_diagram.htm
++ http://www.atnf.csiro.au/outreach/education/senior/astrophysics/stellarevolution_hrintro.html
+
+
+***
+
+```{r echo=FALSE}
+# Functions to Create an HR Diagram
+suppressPackageStartupMessages(library(plotly))
+
+
+dfStars <- read.csv("bright star lst.csv", stringsAsFactors = FALSE)
+
+dfHR <- dfStars[ , c("STAR", "Constellation", "Code", "B.V", "SPEC..TYPE", "Mv", "FriendlyName")]
+displayName <- function(fname, star, const){
+        ifelse(fname=="", paste(const, star, sep = " "), fname)
+}
+calcTempFromBV <- function(bv) {
+        # temperature calculation formula from https://en.wikipedia.org/wiki/Color_index
+        tempurature <- round(4600 * (( 1/(0.92 * bv + 1.7)) + (1/(.92 * bv + .62))),0)
+        return(tempurature)
+}
+parseType <- function(specType){
+        # Stellar Classifications from: https://en.wikipedia.org/wiki/Stellar_classification#Yerkes_spectral_classification
+        if(grepl('IV', specType)) return('sub giant')
+        if(grepl('V', specType)) return('main sequence')
+        if(grepl('III', specType)) return('normal giant')
+        if(grepl('II', specType)) return('bright giant')
+        if(grepl('Ia', specType)) return('hyper giant')
+        if(grepl('I', specType)) return('super giant')
+        return('none')
+}
+assignSize <- function(Type){
+        if(Type == 'main sequence') return(1)
+        if(Type == 'sub giant') return(2)
+        if(Type == 'normal giant') return(3)
+        if(Type == 'bright giant') return(5)
+        if(Type == 'hyper giant') return(7)
+        if(Type == 'super giant') return(10)
+        if(Type == 'none') return(1)
+}
+
+
+dfHR$displayName <- apply(dfHR[,c('FriendlyName','STAR', 'Constellation')], 1, function(y) displayName(y['FriendlyName'],y['STAR'], y['Constellation']))
+dfHR$temperature <- apply(dfHR[,'B.V', drop=FALSE], 1, function(x) calcTempFromBV(x))
+dfHR$type <- apply(dfHR[,'SPEC..TYPE', drop=FALSE], 1, function(x) parseType(x))
+dfHR$size <- apply(dfHR[,'type', drop=FALSE], 1, function(x) assignSize(x))
+
+dfHR$SpectralClass <- substr(dfHR$SPEC..TYPE, 1, 1)
+
+l <- list(
+        font = list(
+                family = "sans-serif",
+                size = 12,
+                color = "#000"),
+        bgcolor = "#E1E1E1",
+        bordercolor = "#FFFFFF",
+        borderwidth = 2,
+        title="legend")
+
+m <- list(
+  l = 50,
+  r = 50,
+  b = 100,
+  t = 100,
+  pad = 4
+)
+
+p <- plot_ly(data=dfHR[(dfHR$SpectralClass != "W") & (dfHR$SpectralClass != "g"), ],type = "scatter", x=~temperature, y=~Mv, mode="markers", hoverinfo="text", color=~SpectralClass, 
+             size=~size, width = 800, height = 550, 
+             colors = c("#00FF00", "#00CEC1", "#ADB500", "#F7F700", "#FF9C00", "#E52142", "#5A59E9"), 
+             text = ~paste('Name: ', displayName, '<br> Spectral Class: ', SpectralClass, '<br> B-V: ', B.V, '<br> Magnitude: ', Mv, '<br> Temp: ', temperature, '<br> Type: ', type)) %>% 
+                                                        layout(title='HR Diagram for 300+ Brightest Stars', yaxis = list(autorange = "reversed", title='Absolute Magnitue - Mv'), xaxis = list(autorange = "reversed", type = "log", title='Effective Temperature K'), legend=l)
+p
+
+```
+
+
