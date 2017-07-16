@@ -12,11 +12,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Background
 
-The Hertzsprung-Russell Diagram is a graphical tool that astronomers use to classify stars according to their luminosity, spectral type, color, temperature and evolutionary stage.
+The Hertzsprung-Russell Diagram is a graphical tool that astronomers use to classify stars according to their luminosity, spectral type, color, temperature and evolutionary stage.  The examples you frequently see in books show the idealized diagram.  The plot on the next slide is created from a catalog of 300 bright stars.
 
-For more information:
-+ http://www.astro.cornell.edu/academics/courses/astro201/hr_diagram.htm
-+ http://www.atnf.csiro.au/outreach/education/senior/astrophysics/stellarevolution_hrintro.html
+Data for this project was originally downloaded from here in XL format and converted to .csv:  
+ http://astrosci.scimuze.com/stellar_data.htm
+
+For more information about HR Diagrams:  
+ http://www.astro.cornell.edu/academics/courses/astro201/hr_diagram.htm
+ http://www.atnf.csiro.au/outreach/education/senior/astrophysics/stellarevolution_hrintro.html
 
 
 ***
