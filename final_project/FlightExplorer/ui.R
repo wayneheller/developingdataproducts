@@ -18,8 +18,13 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
+        h4("Instructions:"),
+        h5("Step 1: Select Airlines."),
+        h5("Step 2: Select Flight Number."),
+        h5("Step 3: Select Month of Departure."),
+        h5("Step 4: Select City of Origination."),
         uiOutput("airlines"),
-        textInput("FL_NUM", "Flight Number:"),
+        uiOutput("flight"),
         uiOutput("month"),
         uiOutput("cities"),
         uiOutput("button")
@@ -29,9 +34,8 @@ shinyUI(fluidPage(
     ),
     # Show a plot of the generated distribution
     mainPanel(
-            h3("Hello"),
-            textOutput("msg"),
-            plotOutput('plot'),
+            plotOutput('plot1'),
+            plotOutput('plot2'),
             dataTableOutput('data')
                         
         

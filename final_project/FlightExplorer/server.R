@@ -13,17 +13,30 @@ library(ggplot2)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+    withProgress(message = "Loading Flight Data...Please Wait",  {
+        dfFlightSummary <- read.csv("FlightSummaryData.csv")
+    } )
+        output$airlines <- renderUI({selectInput("choose_airline", "Airline:", as.list(unique(dfFlightSummary$AIRLINE_NAME)), selected = NULL)})
   
-  dfFlightSummary <- read.csv("FlightSummaryData.csv")
-        
-  output$airlines <- renderUI({selectInput("choose_airline", "Airline:", as.list(unique(dfFlightSummary$AIRLINE_NAME)))})
-  
-  
+        output$flight <- renderUI({
+                if (!is.null(input$choose_airline)) {
+                        dfFlightSummary <- dfFlightSummary %>% filter(AIRLINE_NAME == input$choose_airline)
+                        selectInput("FL_NUM", "Flight Number:", as.list(sort(unique(dfFlightSummary$FL_NUM))))
+                }
+                else {selectInput("FL_NUM", "Flight Number:", "First Select Airlines")
+                }
+                
+        })
+    
   
         output$cities <- renderUI({
-                if (!is.null(input$choose_airline) & input$FL_NUM >=1 ) {
-                        dfFlightSummary <- dfFlightSummary %>% filter(AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM)
+                if (!is.null(input$choose_airline) & !is.null(input$choose_month) & input$FL_NUM >=1 ) {
+                        dfFlightSummary <- dfFlightSummary %>% filter(AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, MONTH == input$choose_month)
                         selectInput("choose_origin", "Origination City:", as.list(unique(dfFlightSummary$ORIGIN_CITY_NAME)))
+                }
+                else {selectInput("choose_origin", "Origination City:",
+                                  c("First Select Airlines, Enter Flight Number and Select Month"))
+                        
                 }
                 })
         output$month <- renderUI({
@@ -41,33 +54,48 @@ shinyServer(function(input, output) {
                                       "September" = 9,
                                       "October" = 10,
                                       "November" = 11,
-                                      "December" = 12), selected = ifelse(is.null(input$choose_month) | length(input$choose_month) == 0, 1, input$choose_month))
-                        }
+                                      "December" = 12))
+                }
+                else {selectInput("choose_month", "Month of Departure:",
+                                  c("First Select Airlines and Enter Flight Number"))
+                        
+                }
                 })
         output$data <- renderDataTable({
-                if (!is.null(input$choose_month) & !is.null(input$choose_origin)  ) {
-                        #dfFlightSummary %>% filter(MONTH == input$choose_month, ORIGIN_CITY_NAME == input$choose_city)
-                        dfFlightSummary %>% filter(MONTH == input$choose_month, AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, ORIGIN_CITY_NAME == input$choose_origin)
-                }
+               if (!is.null(input$choose_month) & !is.null(input$choose_origin)  ) {
+        #                #dfFlightSummary %>% filter(MONTH == input$choose_month, ORIGIN_CITY_NAME == input$choose_city)
+                       dfFlightSummary %>% filter(MONTH == input$choose_month, AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, ORIGIN_CITY_NAME == input$choose_origin)
+               }
         })
-        output$plot <- renderPlot({
+        output$plot1 <- renderPlot({
                 if (!is.null(input$choose_month) & !is.null(input$choose_origin)  ) {
-                        #dfFlightSummary %>% filter(MONTH == input$choose_month, ORIGIN_CITY_NAME == input$choose_city)
+                        #dfFlightSummary %>% filter(MONTH == input$choose_month, AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, ORIGIN_CITY_NAME == input$choose_origin)
                         dfPlot <- dfFlightSummary %>% filter(MONTH == input$choose_month, AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, ORIGIN_CITY_NAME == input$choose_origin)
-                        g <- ggplot(dfPlot, aes(DAY_OF_WEEK, avg_delay))
+                        day.of.week <- c("Monday" = 1, "Tuesday" =2, "Wednesday"=3, "Thursday"=4,"Friday"=5,"Saturday"=6,"Sunday"=7)
+                        g <- ggplot(dfPlot, aes(reorder(names(day.of.week[DAY_OF_WEEK]), DAY_OF_WEEK) , avg_delay))
+                        g <- g + labs(title = "Average Minutes of Arrival Delay by Day of the Week", x = "Day of Week", y= "Average Arrival Delay (mins)")
                         # Number of cars in each class:
-                        g + geom_bar(stat="identity")
+                        g <- g + geom_bar(stat="identity", color="black", fill="red")
+                        g + geom_text(aes(label=avg_delay), vjust=1.5, colour="black")
                         #barplot(as.matrix(dfPlot[, c("DAY_OF_WEEK", "avg_delay")]))
                         }
         })
-        #output$button <- renderUI({submitButton("Next >")})
+        output$plot2 <- renderPlot({
+                if (!is.null(input$choose_month) & !is.null(input$choose_origin)  ) {
+                        #dfFlightSummary %>% filter(MONTH == input$choose_month, ORIGIN_CITY_NAME == input$choose_city)
+                        dfPlot <- dfFlightSummary %>% filter(MONTH == input$choose_month, AIRLINE_NAME == input$choose_airline, FL_NUM == input$FL_NUM, ORIGIN_CITY_NAME == input$choose_origin)
+                        day.of.week <- c("Monday" = 1, "Tuesday" =2, "Wednesday"=3, "Thursday"=4,"Friday"=5,"Saturday"=6,"Sunday"=7)
+                        g <- ggplot(dfPlot, aes(reorder(names(day.of.week[DAY_OF_WEEK]), DAY_OF_WEEK) , pct_cancelled))
+                        g <- g + labs(title = "Percent Flights Cancelled by Day of the Week", x = "Day of Week", y= "% Flights Cancelled")
+                        # Number of cars in each class:
+                        g <- g+ geom_bar(stat="identity", color="red", fill="red") + ylim(0,100)
+                        g + geom_text(aes(label=pct_cancelled), vjust=1.5, colour="black")
+                        
+                }
+        })
         
   
   
-  #if (input$MONTH >= 1 & input$choose_origin != "") {
-  #      output$data = renderDataTable({dfFlightSummary %>% filter(MONTH == input$MONTH, DAY_OF_WEEK== input$DAY_OF_WEEK, FL_NUM == input$FL_NUM)
-  #      })
-  
-  #}
+
   
 })
