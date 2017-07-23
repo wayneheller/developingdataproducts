@@ -19,16 +19,19 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
         h4("Instructions:"),
+        h5("Step 0: Be Patient While Data Loads."),
+        p("You should see a progress message in the lower right corner.  If not, you may need to reload this page."),
         h5("Step 1: Select Airlines."),
         h5("Step 2: Select Flight Number."),
         h5("Step 3: Select Month of Departure."),
+        p("1 = January, 2 = February, and so on"),
         h5("Step 4: Select City of Origination."),
         uiOutput("airlines"),
         uiOutput("flight"),
         uiOutput("month"),
         uiOutput("cities"),
         uiOutput("button")
-        #submitButton("submit")
+        #,submitButton("submit")
        
        
     ),
