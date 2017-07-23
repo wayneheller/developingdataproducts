@@ -14,6 +14,7 @@ library(ggplot2)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     withProgress(message = "Loading Flight Data...Please Wait",  {
+        # Read summarized flight information
         dfFlightSummary <- read.csv("FlightSummaryData.csv")
     } )
         output$airlines <- renderUI({selectInput("choose_airline", "Airline:", as.list(unique(dfFlightSummary$AIRLINE_NAME)), selected = NULL)})
